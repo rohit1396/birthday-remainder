@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import data from "./data";
+import List from "./List";
 
 function App() {
+  const [userData, setUserData] = useState(data);
+  console.log(userData);
+
+  const clearBirthdays = () => {
+    setUserData([]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>{userData.length} birthdays today</h3>
+      <List userData={userData} />
+      <button onClick={clearBirthdays}>Clear All</button>
     </div>
   );
 }
